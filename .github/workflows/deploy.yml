@@ -55,11 +55,11 @@ jobs:
       - name: Atualiza em TST
         if: ${{ inputs.ambiente == 'TST' }}
         run: |
-          rsync -e "ssh -i keypair.pem" -avz backend/* ${{ secrets.URL_TST }}:${{ secrets.ANDERSON_MARTINS }}/tst/backend
-          rsync -e "ssh -i keypair.pem" -avz frontend/* ${{ secrets.URL_TST }}:${{ secrets.ANDERSON_MARTINS }}/tst/frontend
+          rsync -e "ssh -i keypair.pem" -avz backend/* ${{ secrets.URL_TST }}:${{ secrets.PASTA_PROJETO }}/tst/backend
+          rsync -e "ssh -i keypair.pem" -avz frontend/* ${{ secrets.URL_TST }}:${{ secrets.PASTA_PROJETO }}/tst/frontend
       #Atualiza Produção
       - name: Atualiza em PRD
         if: ${{ inputs.ambiente == 'PRD' }}
         run: |
-          rsync -e "ssh -i keypair.pem" -avz backend/* ${{ secrets.URL_PRD }}:${{ secrets.ANDERSON_MARTINS }}/prd/backend
-          rsync -e "ssh -i keypair.pem" -avz frontend/* ${{ secrets.URL_PRD }}:${{ secrets.ANDERSON_MARTINS }}/prd/frontend
+          rsync -e "ssh -i keypair.pem" -avz backend/* ${{ secrets.URL_PRD }}:${{ secrets.PASTA_PROJETO }}/prd/backend
+          rsync -e "ssh -i keypair.pem" -avz frontend/* ${{ secrets.URL_PRD }}:${{ secrets.PASTA_PROJETO }}/prd/frontend
