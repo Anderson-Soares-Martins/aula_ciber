@@ -62,7 +62,6 @@ jobs:
 
   build_back:
     name: Build Back
-    needs: [GerarVersao]
     runs-on: ubuntu-latest
     steps:
       - name: Baixando o repositório
@@ -89,7 +88,6 @@ jobs:
 
   build_front:
     name: Build Front
-    needs: [GerarVersao]
     runs-on: ubuntu-latest
     steps:
       - name: Baixando o repositório
@@ -116,7 +114,7 @@ jobs:
 
   empacotar:
     name: Empacotar
-    needs: [build_back, build_front, GerarVersao]
+    needs: [build_back, build_front]
     runs-on: ubuntu-latest
     steps:
      - name: Download Zip Frontend
@@ -136,3 +134,4 @@ jobs:
          tag_name: ${{ needs.GerarVersao.outputs.versao }}
          fail_on_unmatched_files: true
          files: backend.zip, frontend.zip
+
